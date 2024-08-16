@@ -6,7 +6,7 @@ from pyspark.sql.functions import col,expr, explode, current_date,regexp_replace
 from pyspark.sql.types import IntegerType, StringType, DoubleType, DateType, ArrayType, StructType, StructField
 import pandas as pd
 import os 
-
+  
 # COMMAND ----------
 
 
