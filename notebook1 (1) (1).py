@@ -10,6 +10,10 @@ import os
 # COMMAND ----------
 
 
+
+
+
+
 spark = SparkSession.builder\
         .appName('InsuranceCraft')\
         .config('Spark.sql.adaptive.enabled',True)\
