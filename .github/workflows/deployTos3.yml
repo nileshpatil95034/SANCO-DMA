@@ -21,7 +21,7 @@ jobs:
       - name: Deploy Lambda Function
         run: |
           aws lambda create-function --function-name my_notebook_lambda \
-            --runtime python3.8 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_LAMBDA_ROLE }} \
+            --runtime python3.8 --role ${{ secrets.AWS_LAMBDA_ROLE_ARN }} \
             --handler notebook.lambda_handler --zip-file fileb://lambda_function.zip \
             --region us-west-1 || \
           aws lambda update-function-code --function-name my_notebook_lambda --zip-file fileb://lambda_function.zip --region us-west-1
