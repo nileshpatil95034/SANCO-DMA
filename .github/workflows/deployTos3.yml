@@ -26,27 +26,18 @@ jobs:
           SOURCE_DIR: 'sampledata'
           DEST_DIR: 'sampledata/'
 
-      # Step 3: Sync the 'insurancedb/notebook.py' file to S3_BUCKET/insurance/code_librery
-      - name: Sync insurancedb/notebook.py to S3_BUCKET/insurance/code_librery
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
+      # Step 3: Sync the 'notebook.py' file from insurancedb to S3_BUCKET/insurance/code_librery
+      - name: Sync notebook.py to S3_BUCKET/insurance/code_librery
+        run: aws s3 cp insurancedb/notebook.py s3://${{ secrets.AWS_S3_BUCKET }}/insurance/code_librery/notebook.py --acl public-read
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
-          SOURCE_DIR: 'insurancedb/notebook.py'
-          DEST_DIR: 'insurance/code_librery/'
 
-      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/
-      - name: Sync Project Requirement.docx to S3_BUCKET/
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
+      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/project_information
+      - name: Sync Project Requirement.docx to S3_BUCKET/project_information
+        run: aws s3 cp Project\ Requirement.docx s3://${{ secrets.AWS_S3_BUCKET }}/project_information/Project\ Requirement.docx --acl public-read
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
-          SOURCE_DIR: 'Project Requirement.docx'
