@@ -39,8 +39,8 @@ jobs:
           SOURCE_DIR: 'insurancedb/notebook.py'
           DEST_DIR: 'insurance/code_librery/'
 
-      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/project_information
-      - name: Sync Project Requirement.docx to S3_BUCKET/project_information
+      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/
+      - name: Sync Project Requirement.docx to S3_BUCKET/
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
@@ -50,4 +50,3 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
           SOURCE_DIR: 'Project Requirement.docx'
-          DEST_DIR: 'project_information/'
