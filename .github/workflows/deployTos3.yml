@@ -1,21 +1,53 @@
-name: Upload Website
+name: Upload Files
 
 on:
   push:
     branches:
-    - dev
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: jakejarvis/s3-sync-action@master
-      with:
-        args: --acl public-read --follow-symlinks --delete
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-west-1'   # optional: defaults to us-east-1
+      # Step 1: Checkout the repository to the GitHub runner
+      - name: Checkout repository
+        uses: actions/checkout@master
 
+      # Step 2: Sync the 'sampledata' folder to S3_BUCKET/sampledata
+      - name: Sync sampledata folder to S3_BUCKET/sampledata
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-west-1'
+          SOURCE_DIR: 'sampledata'
+          DEST_DIR: 'sampledata/'
+
+      # Step 3: Sync the 'insurancedb/notebook.py' file to S3_BUCKET/insurance/code_librery
+      - name: Sync insurancedb/notebook.py to S3_BUCKET/insurance/code_librery
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-west-1'
+          SOURCE_DIR: 'insurancedb/notebook.py'
+          DEST_DIR: 'insurance/code_librery/'
+
+      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/project_information
+      - name: Sync Project Requirement.docx to S3_BUCKET/project_information
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-west-1'
+          SOURCE_DIR: 'Project Requirement.docx'
+          DEST_DIR: 'project_information/'

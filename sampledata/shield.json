@@ -1,0 +1,312 @@
+[
+  {
+    "customer_code": 1,
+    "age": 25,
+    "age_group": "18-24",
+    "city": "Delhi",
+    "acquisition_channel": "Online App",
+    "policy_id": "POL4321HEL",
+    "base_coverage_amt": 500000,
+    "base_premium_amt": 5000,
+    "sale": {
+      "sale_id": 1,
+      "sale_date": "2023-01-15",
+      "final_premium_amt": 5200,
+      "sales_mode": "Online App"
+    },
+    "revenue": {
+      "revenue_id": 1,
+      "revenue_date": "2023-01-15",
+      "revenue_amt": 5000
+    },
+    "claims": [20000, 15000],
+    "date": "2023-01-01",
+    "day": 1,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "ABCDE1234F",
+      "aadhaar_number": "1234 5678 9101"
+    }
+  },
+  {
+    "customer_code": 2,
+    "age": 34,
+    "age_group": "31-40",
+    "city": "Mumbai",
+    "acquisition_channel": "Offline Agent",
+    "policy_id": "POL2005HEL",
+    "base_coverage_amt": 1000000,
+    "base_premium_amt": 10000,
+    "sale": {
+      "sale_id": 2,
+      "sale_date": "2023-02-10",
+      "final_premium_amt": 10100,
+      "sales_mode": "Offline Agent"
+    },
+    "revenue": {
+      "revenue_id": 2,
+      "revenue_date": "2023-02-10",
+      "revenue_amt": 10000
+    },
+    "claims": [50000],
+    "date": "2023-01-02",
+    "day": 2,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "FGHIJ5678K",
+      "aadhaar_number": "2345 6789 0123"
+    }
+  },
+  {
+    "customer_code": 3,
+    "age": 45,
+    "age_group": "41-50",
+    "city": "Bangalore",
+    "acquisition_channel": "Online Website",
+    "policy_id": "POL4321HEL",
+    "base_coverage_amt": 500000,
+    "base_premium_amt": 5000,
+    "sale": {
+      "sale_id": 3,
+      "sale_date": "2023-03-05",
+      "final_premium_amt": 5000,
+      "sales_mode": "Online Website"
+    },
+    "revenue": {
+      "revenue_id": 3,
+      "revenue_date": "2023-03-05",
+      "revenue_amt": 5000
+    },
+    "claims": [12000, 8000, 25000],
+    "date": "2023-01-03",
+    "day": 3,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "KLMNO9012P",
+      "aadhaar_number": "3456 7890 1234"
+    }
+  },
+  {
+    "customer_code": 4,
+    "age": 29,
+    "age_group": "25-30",
+    "city": "Chennai",
+    "acquisition_channel": "Offline Agent",
+    "policy_id": "POL2005HEL",
+    "base_coverage_amt": 1000000,
+    "base_premium_amt": 10000,
+    "sale": {
+      "sale_id": 4,
+      "sale_date": "2023-04-20",
+      "final_premium_amt": 10200,
+      "sales_mode": "Offline Agent"
+    },
+    "revenue": {
+      "revenue_id": 4,
+      "revenue_date": "2023-04-20",
+      "revenue_amt": 10000
+    },
+    "claims": [],
+    "date": "2023-01-04",
+    "day": 4,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "PQRST3456U",
+      "aadhaar_number": "4567 8901 2345"
+    }
+  },
+  {
+    "customer_code": 5,
+    "age": 52,
+    "age_group": "51-60",
+    "city": "Hyderabad",
+    "acquisition_channel": "Online App",
+    "policy_id": "POL4321HEL",
+    "base_coverage_amt": 500000,
+    "base_premium_amt": 5000,
+    "sale": {
+      "sale_id": 5,
+      "sale_date": "2023-05-15",
+      "final_premium_amt": 5300,
+      "sales_mode": "Online App"
+    },
+    "revenue": {
+      "revenue_id": 5,
+      "revenue_date": "2023-05-15",
+      "revenue_amt": 5000
+    },
+    "claims": [30000],
+    "date": "2023-01-05",
+    "day": 5,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "UVWXY6789Z",
+      "aadhaar_number": "5678 9012 3456"
+    }
+  },
+  {
+    "customer_code": 6,
+    "age": 31,
+    "age_group": "31-40",
+    "city": "Delhi",
+    "acquisition_channel": "Offline Agent",
+    "policy_id": "POL2005HEL",
+    "base_coverage_amt": 1000000,
+    "base_premium_amt": 10000,
+    "sale": {
+      "sale_id": 6,
+      "sale_date": "2023-06-25",
+      "final_premium_amt": 10150,
+      "sales_mode": "Offline Agent"
+    },
+    "revenue": {
+      "revenue_id": 6,
+      "revenue_date": "2023-06-25",
+      "revenue_amt": 10000
+    },
+    "claims": [],
+    "date": "2023-01-06",
+    "day": 6,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "XYZAB1234C",
+      "aadhaar_number": "6789 0123 4567"
+    }
+  },
+  {
+    "customer_code": 7,
+    "age": 67,
+    "age_group": "65+",
+    "city": "Pune",
+    "acquisition_channel": "Online Website",
+    "policy_id": "POL4321HEL",
+    "base_coverage_amt": 500000,
+    "base_premium_amt": 5000,
+    "sale": {
+      "sale_id": 7,
+      "sale_date": "2023-07-30",
+      "final_premium_amt": 5000,
+      "sales_mode": "Online Website"
+    },
+    "revenue": {
+      "revenue_id": 7,
+      "revenue_date": "2023-07-30",
+      "revenue_amt": 5000
+    },
+    "claims": [15000, 20000],
+    "date": "2023-01-07",
+    "day": 7,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekend",
+    "pii_fields": {
+      "pan_number": "BCDEF4567G",
+      "aadhaar_number": "7890 1234 5678"
+    }
+  },
+  {
+    "customer_code": 8,
+    "age": 38,
+    "age_group": "31-40",
+    "city": "Kolkata",
+    "acquisition_channel": "Offline Agent",
+    "policy_id": "POL2005HEL",
+    "base_coverage_amt": 1000000,
+    "base_premium_amt": 10000,
+    "sale": {
+      "sale_id": 8,
+      "sale_date": "2023-08-18",
+      "final_premium_amt": 10250,
+      "sales_mode": "Offline Agent"
+    },
+    "revenue": {
+      "revenue_id": 8,
+      "revenue_date": "2023-08-18",
+      "revenue_amt": 10000
+    },
+    "claims": [50000, 30000],
+    "date": "2023-01-08",
+    "day": 8,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekend",
+    "pii_fields": {
+      "pan_number": "CDEFG7890H",
+      "aadhaar_number": "8901 2345 6789"
+    }
+  },
+  {
+    "customer_code": 9,
+    "age": 22,
+    "age_group": "18-24",
+    "city": "Jaipur",
+    "acquisition_channel": "Online App",
+    "policy_id": "POL4321HEL",
+    "base_coverage_amt": 500000,
+    "base_premium_amt": 5000,
+    "sale": {
+      "sale_id": 9,
+      "sale_date": "2023-09-12",
+      "final_premium_amt": 5200,
+      "sales_mode": "Online App"
+    },
+    "revenue": {
+      "revenue_id": 9,
+      "revenue_date": "2023-09-12",
+      "revenue_amt": 5000
+    },
+    "claims": [25000],
+    "date": "2023-01-09",
+    "day": 9,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "DEFGH1234I",
+      "aadhaar_number": "9012 3456 7890"
+    }
+  },
+  {
+    "customer_code": 10,
+    "age": 61,
+    "age_group": "61-70",
+    "city": "Delhi",
+    "acquisition_channel": "Offline Agent",
+    "policy_id": "POL2005HEL",
+    "base_coverage_amt": 1000000,
+    "base_premium_amt": 10000,
+    "sale": {
+      "sale_id": 10,
+      "sale_date": "2023-10-05",
+      "final_premium_amt": 10000,
+      "sales_mode": "Offline Agent"
+    },
+    "revenue": {
+      "revenue_id": 10,
+      "revenue_date": "2023-10-05",
+      "revenue_amt": 10000
+    },
+    "claims": [10000],
+    "date": "2023-01-10",
+    "day": 10,
+    "month": 1,
+    "year": 2023,
+    "day_type": "Weekday",
+    "pii_fields": {
+      "pan_number": "EFGHI5678J",
+      "aadhaar_number": "0123 4567 8901"
+    }
+  }
+]
