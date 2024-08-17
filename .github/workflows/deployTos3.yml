@@ -1,4 +1,4 @@
-name: Upload Files
+name: Deploy Lambda Function
 
 on:
   push:
@@ -13,30 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@master
 
-      # Step 2: Sync the 'sampledata' folder to S3_BUCKET/sampledata
-      - name: Sync sampledata folder to S3_BUCKET/sampledata
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-west-1'
-          SOURCE_DIR: 'sampledata'
-          DEST_DIR: 'sampledata/'
+      # Step 2: Zip the 'notebook.py' file
+      - name: Zip notebook.py
+        run: zip lambda_function.zip insurancedb/notebook.py
 
-      # Step 3: Sync the 'notebook.py' file from insurancedb to S3_BUCKET/insurance/code_librery
-      - name: Sync notebook.py to S3_BUCKET/insurance/code_librery
-        run: aws s3 cp insurancedb/notebook.py s3://${{ secrets.AWS_S3_BUCKET }}/insurance/code_librery/notebook.py --acl public-read
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-west-1'
-
-      # Step 4: Sync the 'Project Requirement.docx' file to S3_BUCKET/project_information
-      - name: Sync Project Requirement.docx to S3_BUCKET/project_information
-        run: aws s3 cp Project\ Requirement.docx s3://${{ secrets.AWS_S3_BUCKET }}/project_information/Project\ Requirement.docx --acl public-read
+      # Step 3: Deploy the Lambda function
+      - name: Deploy Lambda Function
+        run: |
+          aws lambda create-function --function-name my_notebook_lambda \
+            --runtime python3.8 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_LAMBDA_ROLE }} \
+            --handler notebook.lambda_handler --zip-file fileb://lambda_function.zip \
+            --region us-west-1 || \
+          aws lambda update-function-code --function-name my_notebook_lambda --zip-file fileb://lambda_function.zip --region us-west-1
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
