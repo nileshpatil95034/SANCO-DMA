@@ -5,15 +5,20 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,expr, explode, current_date,regexp_replace,date_format, sum as _sum, count as _count, month, year, avg as _avg, sha2
 from pyspark.sql.types import IntegerType, StringType, DoubleType, DateType, ArrayType, StructType, StructField
 import pandas as pd
-import os
-
+import os 
+     
 # COMMAND ----------
+
+
+
+
+
 
 spark = SparkSession.builder\
         .appName('InsuranceCraft')\
         .config('Spark.sql.adaptive.enabled',True)\
         .config("Spark.dynamicAllocation.enables",True)\
-        .getOrCreate()
+        .getOrCreate() 
 
 # COMMAND ----------
 
@@ -25,7 +30,7 @@ def encrypt_sensitive_fields(df, input_list_pii_field):
     # Drop the original PII fields
     df = df.drop(*input_list_pii_field)
     
-    return df
+    return df 
 
 # COMMAND ----------
 
@@ -46,7 +51,7 @@ if not any(mount.mountPoint == mount_point for mount in dbutils.fs.mounts()):
       extra_configs={f"fs.azure.account.key.{account_name}.blob.core.windows.net": access_key}
     )
 
-display(dbutils.fs.ls(mount_point))
+display(dbutils.fs.ls(mount_point)) 
 
 # COMMAND ----------
 
@@ -117,7 +122,7 @@ json_file_path = f'{mount_point}/inbound/shield.json'
 # Read the JSON file using the defined schema
 df = spark.read.format("json").schema(schema).load(json_file_path)
 df.cache()
-df.display()
+df.display() 
 
 # COMMAND ----------
 
@@ -162,7 +167,7 @@ exploded_df.display(truncate=False)
 
 ### Write the Data into bronze layer
 bronze_path = f'{mount_point}/outbound/bronze'
-exploded_df.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(bronze_path)
+exploded_df.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(bronze_path) 
 
 # COMMAND ----------
 
@@ -188,7 +193,7 @@ silverdf = silverdf.withColumn("age", regexp_replace (col("age"), "[^a-zA-Z0-9 ]
 ### Write the Data into silver layer
 silver_path = f'{mount_point}/outbound/silver'
 silverdf.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(silver_path)
-silverdf.display()
+silverdf.display() 
 
 # COMMAND ----------
 
@@ -236,7 +241,7 @@ monthly_revenue_customers = silverdf.groupBy(year("sale_date").alias("year"), mo
 
 # Revenue Generated in Last year of Business month
 march_data = monthly_revenue_customers.filter((col("year") == 2023) & (col("month") == 3))
-march_data.display()
+march_data.display() 
 
 # COMMAND ----------
 
@@ -251,7 +256,7 @@ gold_path_acquisition_channel = f'{mount_point}/outbound/gold/acquisition_channe
 acquisition_channel_distribution.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(gold_path_acquisition_channel)
 # Write the Data into Gold layer - PART 4
 gold_path_march_data = f'{mount_point}/outbound/gold/march_data'
-march_data.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(gold_path_march_data)
+march_data.coalesce(1).write.format('csv').option('header', 'true').mode("overwrite").save(gold_path_march_data) 
 
 # COMMAND ----------
 
@@ -275,7 +280,7 @@ silverdf.write.format("jdbc").mode("overwrite").option("dbtable", "InsuranceTran
 transformed_df.write.format("jdbc").mode("overwrite").option("dbtable", "transformed_df").options(**mssql_properties).save()
 age_group_distribution.write.format("jdbc").mode("overwrite").option("dbtable", "age_group_distribution").options(**mssql_properties).save()
 acquisition_channel_distribution.write.format("jdbc").mode("overwrite").option("dbtable", "acquisition_channel_distribution").options(**mssql_properties).save()
-march_data.write.format("jdbc").mode("overwrite").option("dbtable", "march_data").options(**mssql_properties).save()
+march_data.write.format("jdbc").mode("overwrite").option("dbtable", "march_data").options(**mssql_properties).save() 
 
 # COMMAND ----------
 
